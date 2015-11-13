@@ -5,9 +5,12 @@ Git使用步驟：
 3.Clone Git雲端專案到xampp/htdocs下面
 4.先創建自己分支，然後每次作業都先找到自己分支，Update from master，等到每次作業完成，到Changes處commit，再Sync，最後從master update from自己分支
 
+Git注意事項：
+1.務必要切換到自己的那個分支，不然會很麻煩阿!!!我還沒找到還原的地方
+2.Commit名稱統一
+    2.1.Summary：時間+更改重點一句話 ex:06:40 新增文件
+    2.2.Description：用數字遞增方式說明Commit重點 ex:1.Git 2.環境
+
 Brackets套件下載
 1.Emmet-->可快速產生HTML語法樣板
 
-Git Commit名稱統一
-1.Summary：時間+更改重點一句話 ex:06:40 新增文件
-2.Description：用數字遞增方式說明Commit重點 ex:1.Git 2.環境
