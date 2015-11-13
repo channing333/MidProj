@@ -1,0 +1,13 @@
+//2015/11/13 PM 06:29
+Git使用步驟：
+1.前往https://desktop.github.com/下載桌面板應用程式
+2.申請帳號-->我開放權限給你們
+3.Clone Git雲端專案到xampp/htdocs下面
+4.先創建自己分支，然後每次作業都先找到自己分支，Update from master，等到每次作業完成，到Changes處commit，再Sync，最後從master update from自己分支
+
+Brackets套件下載
+1.Emmet-->可快速產生HTML語法樣板
+
+Git Commit名稱統一
+1.Summary：時間+更改重點一句話 ex:06:40 新增文件
+2.Description：用數字遞增方式說明Commit重點 ex:1.Git 2.環境
