@@ -1,0 +1,65 @@
+.header{
+	margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+	width: 80%;
+	height: 60px;
+	border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;
+    text-align: center;
+}
+.footer{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+	width: 80%;
+	height: 60px;
+	border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;
+    text-align: center;
+}
+.Content{
+    margin: auto;
+	width: 80%;
+	height: 400px;
+
+	border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;
+}
+.leftContent{
+	float: left;
+	margin: 5px;
+	width: 500px;
+}
+.rightContent{
+	float: left;
+	margin: 30px;
+	width: 800;
+    width:300px;
+    height:300px;
+}
+.font{
+	padding-top: 10px;
+	font-size: 25px;
+	font-family: 微軟正黑體;
+}
+a[class="1"]{
+  text-decoration:none;
+  color:white;
+}
+input[class="1"]{
+    margin-top:25px;
+  width:300px;
+  height:20px;
+}
+.addBtn{
+    margin-left: 50%;
+    margin-top: 5%;
+}
+.color8EC5C6{background-color: #8EC5C6;}
+.colorDodgerblue{background-color: #87B8EB;}
