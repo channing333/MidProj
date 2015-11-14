@@ -4,7 +4,7 @@ Git使用步驟：
 2.申請帳號-->我開放權限給你們
 3.Clone Git雲端專案到xampp/htdocs下面
 4.同步步驟說明
-    4.1.創建自己分支
+    4.1.先到master分支sync
     4.2.每次作業前都先找到自己分支，Update from master
     4.3.每次作業完成後，到自己分支Changes處commit(Local端)，再Sync(雲端Git)
     4.4.從master主幹update from自己分支，再Sync
