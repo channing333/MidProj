@@ -3,25 +3,30 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel=stylesheet type="text/css" href="../css/common.css">
     <title>
         登入頁面
     </title>
 </head>
 
 <body>
+ <script language="JavaScript" src="../js/func.js"></script>
+   <div class="header">實驗室財產管理系統</div>
     <div class="content">
-        <div class="account">
-            <form action="php/login.php" method="post">
+        <div class="information">
+            <form method="post">
                 帳號：
-                <input type="text" name="acc">
+                <input type="text" class="account" name="acc">
                 <br> 密碼：
-                <input type="text" name="pwd">
+                <input type="text" class="account" name="pwd">
                 <br>
-                <input type="submit" name="Send" value="登入">
+                <input type="submit" class="button" name="reg" value="註冊" onclick="this.form.action='register.html';">
+                <input type="submit" class="button" name="Send" value="登入" onclick="this.form.action='../php/login.php';this.form.submit();">
             </form>
         </div>
     </div>
+    <div class="footer">開發者：呂聆煒、李睿恩、陳昱豪(按姓氏筆畫排序)</div>
 </body>
 
 </html>
