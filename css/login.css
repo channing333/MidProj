@@ -7,12 +7,22 @@
 }
 
 .content {
+    text-align: center;
     height: auto;
 }
 
 .information {
+    width: 300px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: #90EE90;
+    color: #111111;
+
 }
 
 .account{
@@ -31,11 +41,12 @@
 }
 
 .button:hover{
-    opacity: 0.5;
+    box-shadow: #666 2px 2px 3px;
 }
 
 .footer {
     text-align: center;
     height: 100px;
+    margin-top: 30px;
     background-color: #EEEEEE;
 }
