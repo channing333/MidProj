@@ -1,0 +1,23 @@
+.leftContent{
+    background-color: #F5DEB3;
+	float: left;
+    height: auto;
+    text-align: center;
+    margin-left: 130px;
+    width: 350px;
+    border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;
+	
+}
+.rightContent{
+    margin-right: 130px;
+	float: right;
+    height: auto;
+    width: 200px;
+}
+btn{
+    height: 10px;
+    width: 10px;
+}
+
