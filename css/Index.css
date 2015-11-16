@@ -15,17 +15,8 @@
 	font-size: 25px;
 	font-family: 微軟正黑體;
 }
-.menubar{
-    border:none;
-    border:0px;
-    margin:0px;
-    padding:0px;
-    
-}
-.ima{
-    width: 10px;
-    height: 10px;
-}
+
+
 table, td, th {
             text-align: center;
             border: 1px solid black;
