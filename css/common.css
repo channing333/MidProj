@@ -1,0 +1,13 @@
+.header {
+    height: 100px;
+    background-color: #90EE90;
+    border-radius: 5px;
+    font-size: 50px;
+    font-family: serif;
+}
+
+.footer {
+    text-align: center;
+    height: 100px;
+    background-color: #EEEEEE;
+}
