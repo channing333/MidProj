@@ -37,7 +37,12 @@
                          <option>其他</option>
                         </select>
                     </div>
-                    <div><input type="text" class="1"><input type="button" value="選擇檔案"></div>
+                    <form action="../php/upload.php" method="post" enctype="multipart/form-data">
+                        檔案名稱:<input type="file" name="file" id="file" / ><br />
+                        <input type="submit" name="submit" value="上傳檔案" />
+                    </form>
+
+
                     <div> <input type="text" class="1"></div>
                     <div><input type="text" class="1"></div>
                 </div>
