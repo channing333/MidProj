@@ -32,20 +32,27 @@
 	-webkit-border-radius: 33px 33px 33px 33px;
 }
 .leftContent{
+    margin-left: 20px;
+    margin-top: 40px;
 	float: left;
-	margin: 5px;
-	width: 500px;
+	width: 80px;
+}
+.centerContent{
+	float: left;
+	margin-left: 25px;
+    margin-top: 40px;
+	width: 400px;
 }
 .rightContent{
 	float: left;
-	margin: 30px;
-	width: 800;
+	margin: 20px;
+
     width:300px;
     height:300px;
 }
 .font{
-	padding-top: 10px;
-	font-size: 25px;
+	margin-top: 20px;
+	font-size: 20px;
 	font-family: 微軟正黑體;
 }
 a[class="1"]{
@@ -53,13 +60,12 @@ a[class="1"]{
   color:white;
 }
 input[class="1"]{
-    margin-top:25px;
-  width:300px;
-  height:20px;
+    margin-top:20px;
+    width:300px;
+    height:20px;
 }
 .addBtn{
-    margin-left: 50%;
-    margin-top: 5%;
+    margin-top: 50px;
 }
 .color8EC5C6{background-color: #8EC5C6;}
 .colorDodgerblue{background-color: #87B8EB;}
