@@ -13,12 +13,38 @@
 	   <div class="header colorDodgerblue font">新增財產</div>
 		<div class="Content color8EC5C6 ">
               <div class="leftContent">
-		          <div class="font">名稱 <input type="text" class="1"></div>
-		          <div class="font">類別 <input type="text" class="1"></div>
-		          <div class="font">圖片 <input type="text" class="1"><input type="button" value="選擇檔案"></div>
-		          <div class="font">編號 <input type="text" class="1"></div>
-		          <div class="font">備註 <input type="text" class="1"></div>
-		          <div class="font addBtn"><input type="button" value="新增"></div>
+		          <div class="font">名稱</div>
+		          <div class="font">類別</div>
+		          <div class="font">圖片 </div>
+		          <div class="font">財產編號</div>
+		          <div class="font">備註 </div>
+		          <div class="font addBtn">
+                       <form >
+                           <input type="submit" value="新增"onclick="this.form.action='Index.html';">
+                       </form>
+                   </div>
+                </div>
+                <div class="centerContent">
+                    <div><input type="text" class="1"></div>
+                    <div> <select style="height:30px;width:305px;margin-top:20px;">
+                         <option>電腦</option>
+                         <option>平板</option>
+                         <option>手機</option>
+                         <option>書籍</option>
+                         <option>文具</option>
+                         <option>線材</option>
+                         <option>簡報相關</option>
+                         <option>其他</option>
+                        </select>
+                    </div>
+                    <form action="../php/upload.php" method="post" enctype="multipart/form-data">
+                        檔案名稱:<input type="file" name="file" id="file" / ><br />
+                        <input type="submit" name="submit" value="上傳檔案" />
+                    </form>
+
+
+                    <div> <input type="text" class="1"></div>
+                    <div><input type="text" class="1"></div>
                 </div>
             <div class="rightContent">
                 <img src="test.jpg">
