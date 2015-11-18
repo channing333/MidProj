@@ -1,13 +1,26 @@
-.header {
-    height: 100px;
-    background-color: #90EE90;
-    border-radius: 5px;
-    font-size: 50px;
-    font-family: serif;
+.funcRow{
+    margin-left: 150px;
+    margin-right: 150px;
+    overflow: hidden;
+    background-color: #EEEEEE;
+    border-radius: 33px 33px 33px 33px;
+}
+.func{
+    float: right;
 }
 
-.footer {
+a {
+    padding-left: 10px;
+    text-decoration:none;
     text-align: center;
-    height: 100px;
-    background-color: #EEEEEE;
+    width: auto;
+    height: 45px;
+    font-size: 30px;
+    color: #333333;
+    padding-right: 10px;
+    border-left-style: solid;
+}
+a:hover{
+    color: #FFFFFF;
+    background-color: #000000;
 }
