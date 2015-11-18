@@ -15,12 +15,20 @@
 	font-size: 25px;
 	font-family: 微軟正黑體;
 }
+.funcRow{
+    margin-left: 150px;
+    margin-right: 150px;
+    overflow: hidden;
+    background-color: #EEEEEE;
+    border-radius: 33px 33px 33px 33px;
+}
+.func{
+    float: right;
+}
 .image{
     width: 300px;
     height: 200px;
-    
 }
-
 
 table, td, th {
             text-align: center;
@@ -38,24 +46,20 @@ th {
         color: white;
 }
 
-ul{
-        margin-right: 150px;        
-        list-style-type: none;
-            
-        padding: 0;
-        overflow: hidden;
+a {
+    padding-left: 10px;
+    text-decoration:none;
+    text-align: center;
+    width: auto;
+    height: 45px;
+    font-size: 30px;
+    color: #333333;
+    padding-right: 10px;
+    border-left-style: solid;
 }
-
-li {
-        float: right;
-}
-a{
-        margin-right: 10px;
-        text-decoration:none;
-        text-align: center;
-        display: block;
-        width: auto;
-        background-color: #F5DEB3;
+a:hover{
+    color: #FFFFFF;
+    background-color: #000000;
 }
 
 .colorF5DEB3{background-color: #F5DEB3;}
