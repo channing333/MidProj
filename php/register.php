@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
          <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
        </div>
 		<div class="Content color8EC5C6">
-            <form action="register.php" >
+            <form action="adduser.php"  method="post">
 		      <div class="font">學號<input type="text" class="1" name="u_number"></div>
 		      <div class="form font">姓名<input type="text" class="1" name="u_name"></div>
 		      <div class="font">年級<input type="text" class="1" name="u_grade"></div>
