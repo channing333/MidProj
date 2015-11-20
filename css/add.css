@@ -1,15 +1,3 @@
-.header{
-	margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
-	width: 80%;
-	height: 60px;
-	border-radius: 33px 33px 33px 33px;
-	-moz-border-radius: 33px 33px 33px 33px;
-	-webkit-border-radius: 33px 33px 33px 33px;
-    text-align: center;
-}
 .footer{
     margin-top: 15px;
     margin-bottom: 15px;
@@ -22,6 +10,7 @@
 	-webkit-border-radius: 33px 33px 33px 33px;
     text-align: center;
 }
+
 .Content{
     margin: auto;
 	width: 80%;
@@ -67,5 +56,8 @@ input[class="1"]{
 .addBtn{
     margin-top: 50px;
 }
-.color8EC5C6{background-color: #8EC5C6;}
+.color8EC5C6{
+    background-color: #8EC5C6;
+    margin-top:10px;
+}
 .colorDodgerblue{background-color: #87B8EB;}
