@@ -1,26 +1,47 @@
-.funcRow{
+.common-head{
+    background-color: #F5DEB3;
+    margin: 15px 0px;
+    padding-top: 20px;
+	height: 60px;
+	border-radius: 33px 33px 33px 33px;
+    text-align: center;
+    font-size:30px;   
+}
+
+.common-funcRow{
     margin-left: 150px;
     margin-right: 150px;
     overflow: hidden;
     background-color: #EEEEEE;
     border-radius: 33px 33px 33px 33px;
 }
-.func{
+.common-func{
     float: right;
+    border-left-style: solid;
 }
 
-a {
-    padding-left: 10px;
+.common-a {
+    padding: 0px 10px;
     text-decoration:none;
     text-align: center;
     width: auto;
     height: 45px;
     font-size: 30px;
     color: #333333;
-    padding-right: 10px;
-    border-left-style: solid;
 }
-a:hover{
+.common-a:hover{
     color: #FFFFFF;
     background-color: #000000;
 }
+
+.common-now{
+    padding: 0px 10px;
+    text-decoration:none;
+    text-align: center;
+    width: auto;
+    height: 45px;
+    font-size: 30px;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
