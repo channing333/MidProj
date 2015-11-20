@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/common.css">
     <script language="JavaScript" src="../js/func.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css" rel="stylesheet">  
+    <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css" rel="stylesheet">  
+    <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js"></script> 
     <title>
         登入頁面
     </title>
@@ -17,19 +20,20 @@
          <div class="common-func"><a class="common-now" href="Login.html">使用者:</a></div>
          <div class="common-func"><a class="common-a" href="Itemchose.html">刪除</a></div>
          <div class="common-func"><a class="common-a" href="Itemchose.html">編輯</a></div>
-         <div class="common-func"><a class="common-a" href="add.html">新增</a></div>
-         <div class="common-func"><a class="common-a" href="index.html">首頁</a></div>
+         <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
+         <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
    </div>
     <div class="content">
         <div class="information">
-            <form method="post">
+           <form name="login" method="post">
                 帳號：
                 <input type="text" class="account" name="acc">
                 <br> 密碼：
                 <input type="text" class="account" name="pwd">
                 <br>
+                <input type="button" class="button" name="Send" value="登入" onclick="loginError()">
                 <input type="submit" class="button" name="reg" value="註冊" onclick="this.form.action='register.html';">
-                <input type="submit" class="button" name="Send" value="登入" onclick="this.form.action='../php/login.php';this.form.submit();">
+                
             </form>
         </div>
     </div>

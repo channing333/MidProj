@@ -8,7 +8,7 @@ $account=$_POST["acc"];
 $password=$_POST["pwd"];
 
 //查詢語句
-$sql = select("user","u_number",$account);
+$sql = selectColumn("user","u_number",$account);
 //執行SQL語句
 $query = mysql_query($sql, $link);
 
@@ -16,7 +16,7 @@ $result = mysql_fetch_row($query);
 
 if($result!=null && $result[6] == $password){
     //待修改使用者辨別
-    header("Location: ../html/index.html"); 
+    header("Location: index.php"); 
 }
 else{
     echo '帳號密碼錯誤';
