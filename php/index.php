@@ -11,7 +11,9 @@ include ("db_func.php");
 	<meta charset="utf-8">
     <link rel="stylesheet" href="../css/Index.css">
     <link rel="stylesheet" href="../css/common.css">
-    <script type="text/javascript" src="../js/func.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/add.js"></script>
+    <script type="text/javascript" src="../js/adduser.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css" rel="stylesheet">  
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css" rel="stylesheet">  
     <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js"></script> 
@@ -30,6 +32,12 @@ include ("db_func.php");
 //判斷有沒有給值
     if(isset($_GET['add']) && $_GET['add']==1){
         echo "<script>addError();</script>";
+    } 
+    else{
+        
+    }
+    if(isset($_GET['adduser']) && $_GET['adduser']==1){
+        echo "<script>adduserError();</script>";
     } 
     else{
         

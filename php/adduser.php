@@ -9,9 +9,9 @@ VALUES ( '".$_POST["u_number"]."', '".$_POST["u_name"]."','".$_POST["u_grade"]."
 //執行SQL語句
 $query = mysql_query($sql, $link);
 if($query){
-    header("Location: index.php?add=1");
+    header("Location: index.php?adduser=1");
 }
 else{
-    header("Location: index.php?add=2");
+    header("Location: index.php?adduser=2");
 }
 ?>
