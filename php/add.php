@@ -66,7 +66,7 @@ include ("db_func.php");
                     <input type="text" class="1" name="p_number">
                 </div>
                 <div>
-                    <input type="text" class="1" name="p_note">
+                   <textarea name="p_note" cols="40" rows="4" style="width: 300px; margin-top:20px;"></textarea>  
                 </div>
                     <input type="submit" value="新增">
                 </form>
