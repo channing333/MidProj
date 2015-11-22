@@ -12,14 +12,20 @@ function selectColumn($datasheet,$column,$condition){
 }
 
 //插入 全部
-function insertAll($datasheet,$columnArray,$value){
+function insertAll($datasheet,$columnArray,$value,$PK_AI){
     //迴圈1.判斷欄位長度2.字串相加
     $addString="";
     $columnString="";
     for($i=0;$i<count($value);$i++){
         $addString = $addString."'".$value[$i]."',";
         //適用唯一主鍵且第一欄位為主鍵
-        $columnString = $columnString.mysql_field_name($columnArray, $i+1).",";
+        if($PK_AI=="1"){
+            $columnString = $columnString.mysql_field_name($columnArray, $i+1).",";
+        }
+        else{
+            $columnString = $columnString.mysql_field_name($columnArray, $i).",";
+        }
+        
     }
     //去掉最後一個,
     $addString=substr($addString,0,-1);
@@ -28,4 +34,9 @@ function insertAll($datasheet,$columnArray,$value){
     return "INSERT INTO ".$datasheet." (".$columnString.") VALUES (".$addString.")";
 }
 
+//查詢 JOIN
+function selectJoin($newColumn,$datasheet1,$datasheet2,$column1,$column2){
+    return "SELECT ".$newColumn." from ".$datasheet1.",".$datasheet2." WHERE 
+            ".$datasheet1.".".$column1."=".$datasheet2.".".$column2."";
+}
 ?>

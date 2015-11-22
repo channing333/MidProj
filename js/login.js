@@ -6,3 +6,7 @@ function loginError(){
         login.submit();
     }
 }
+
+function loginSuccess(){
+    return alertify.success('登入成功');
+}

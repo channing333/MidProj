@@ -14,6 +14,7 @@ include ("db_func.php");
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/add.js"></script>
     <script type="text/javascript" src="../js/adduser.js"></script>
+    <script type="text/javascript" src="../js/login.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css" rel="stylesheet">  
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css" rel="stylesheet">  
     <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js"></script> 
@@ -42,10 +43,27 @@ include ("db_func.php");
     else{
         
     }
+    if(isset($_GET['login']) && $_GET['login']==0){
+        echo "<script>loginSuccess();</script>";
+    } 
+    else{
+        
+    }
 ?>
    <div class="common-head">實驗室財產管理系統</div>
    <div class="common-funcRow">
-         <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
+        <?php
+        session_start(); 
+        
+       if($_SESSION['login']=="success"){
+           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
+       }
+       else{
+           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
+           echo "<script>loginError();</script>";
+       }
+       ?>
+         
          <div class="common-func"><a class="common-a" href="../html/Itemchose.html">刪除</a></div>
          <div class="common-func"><a class="common-a" href="../html/Itemchose.html">編輯</a></div>
          <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
@@ -75,37 +93,30 @@ include ("db_func.php");
             <th>前持有人</th>
             <th>類別</th>
             <th>備註</th>
+            <th>實驗室</th>
           </tr>
 <?php
 //查詢語句
-$sql = selectAll("property");
+//欄位說明
+$sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id","c_id");
 //執行SQL語句
 $query = mysql_query($sql, $link);
 
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
-    echo "<td><img class=".'image'." src=".'小電腦.jpg'."></td>";
-    echo "<td>002</td>";
-    echo "<td>小筆電</td>";
+    echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
+    echo "<td>".$row[1]."</td>";
+    echo "<td>".$row[2]."</td>";
     echo "<td>2015/11/15</td>";
     echo "<td>陳昱豪</td>";
     echo "<td>呂聆煒</td>";
-    echo "<td>電腦</td>";
-    echo "<td>請勿下載遊戲及個人檔案!</td>";
+    echo "<td>".$row[3]."</td>";
+    echo "<td>".$row[4]."</td>";
+    echo "<td>".$row[5]."</td>";
     echo "</tr>";
 }
 
 ?>
-          <tr>
-            <td>無圖片</td>
-            <td>004</td>
-            <td>資料結構</td>
-            <td>2015/11/16</td>
-            <td>LAB</td>
-            <td>陳昱豪</td>
-            <td>書本</td>
-            <td>請勿亂畫</td>
-          </tr>
     </table>
 	  
 </body>

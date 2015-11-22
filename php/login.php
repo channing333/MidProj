@@ -14,12 +14,15 @@ $query = mysql_query($sql, $link);
 
 $result = mysql_fetch_row($query);
 
-if($result!=null && $result[6] == $password){
-    //待修改使用者辨別
-    header("Location: index.php"); 
+if($result!=null && $result[5] == $password){
+    session_start();
+    //登入成功戳記
+    $_SESSION["login"]="success";
+    $_SESSION["acc"]=$_POST["acc"];
+    header("Location: ../php/index.php?login=0"); 
 }
 else{
-    echo '帳號密碼錯誤';
+    echo '登入失敗';
     header("Location: ../html/login.html"); 
 }
 
