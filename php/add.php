@@ -22,7 +22,17 @@ include ("db_func.php");
     <body>
         <div class="common-head">新增財產</div>
         <div class="common-funcRow">
-            <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
+        <?php
+        session_start(); 
+        
+       if($_SESSION['login']=="success"){
+           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
+       }
+       else{
+           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
+           echo "<script>loginError();</script>";
+       }
+       ?>
             <div class="common-func"><a class="common-a" href="../html/Itemchose.html">刪除</a></div>
             <div class="common-func"><a class="common-a" href="../html/Itemchose.html">編輯</a></div>
             <div class="common-func"><a class="common-now" href="add.html">新增</a></div>
@@ -35,6 +45,7 @@ include ("db_func.php");
                 <div class="font">類別</div>
                 <div class="font">圖片 </div>
                 <div class="font">財產編號</div>
+                <div class="font">實驗室</div>
                 <div class="font">備註 </div>
             </div>
             <div class="centerContent">
@@ -43,9 +54,10 @@ include ("db_func.php");
                     <input type="text" class="1" name="p_name">
                 </div>
                 <div>
-                    <select style="height:30px;width:305px;margin-top:20px;" name="p_category">
+                    <select style="height:30px;width:305px;margin-top:20px;" name="c_id">
                                       
                     <?php
+                        //財產類別顯示
                     //查詢語句
                     $sql = selectAll("category");
                     //執行SQL語句
@@ -66,13 +78,29 @@ include ("db_func.php");
                     <input type="text" class="1" name="p_number">
                 </div>
                 <div>
+                    <select style="height:30px;width:305px;margin-top:20px;" name="l_id">
+                                      
+                    <?php
+                    //財產歸屬實驗室顯示
+                    //查詢語句
+                    $sql = selectAll("lab");
+                    //執行SQL語句
+                    $query = mysql_query($sql, $link);
+                    while ( $row = mysql_fetch_row($query) ) {
+                        echo "<option value=".$row[0].">".$row[1]."</option>";
+                    }
+                    ?>
+
+                    </select>
+                </div>  
+                <div>
                    <textarea name="p_note" cols="40" rows="4" style="width: 300px; margin-top:20px;"></textarea>  
                 </div>
                     <input type="submit" value="新增">
                 </form>
             </div>
             <div class="rightContent">
-                <img src="../html/test.jpg">
+                <img src="../image/test.jpg">
             </div>
         </div>
         <div class="footer colorDodgerblue font">全球資訊網程式設計</div>
