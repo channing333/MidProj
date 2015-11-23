@@ -67,7 +67,7 @@ $sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","categor
 $query = mysql_query($sql, $link);
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
-    echo " <td><input type=".'checkbox'." name=".'check[]'." value='$row[1]'></td>";
+    echo " <td><input type=".'checkbox'." name='check[]' value='$row[1]'></td>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
     echo "<td>".$row[1]."</td>";
     echo "<td>".$row[2]."</td>";

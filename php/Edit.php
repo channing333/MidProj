@@ -58,27 +58,26 @@ $sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","categor
 $query = mysql_query($sql, $link);
 $p_number=$_POST['check'];
 $arr=0;
+echo "<form action='update.php' method=post>";
 while($row = mysql_fetch_row($query)){
     foreach ( $p_number as $arr){
     if($row[1]==$arr){
         echo "<tr>";
         echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
-        echo "<td>".$row[1]."</td>";
-        echo "<td>".$row[2]."<input type=".'text'." name=".'target'."></td>";
+        echo "<td>".$row[1]."<name='p_num[]'></td>";
+        echo "<td><input type='text' name='p_name[]' value='".$row[2]."'></td>";
         echo "<td>2015/11/15<input type=".'text'." name=".'target'."></td>";
         echo "<td>陳昱豪<input type=".'text'." name=".'target'."></td>";
         echo "<td>呂聆煒<input type=".'text'." name=".'target'."></td>";
-        echo "<td>".$row[3]."<input type=".'text'." name=".'target'."></td>";
-        echo "<td>".$row[4]."<input type=".'text'." name=".'target'."></td>";
+        echo "<td>電腦<input type=".'text'." name='c_id[]'></td>";
+        echo "<td><input type='text' name='p_note[]' value='".$row[4]."'></td>";
         echo "</tr>";
         }
     }
-
 }
-
+       echo "<input type=".'submit'." value=".'修改完成'.">";
+       echo "</form>";
 ?>
-    <input type="button" value="修改完成">
-
 
 </body>
 </html>
