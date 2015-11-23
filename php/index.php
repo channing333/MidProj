@@ -64,8 +64,8 @@ include ("db_func.php");
        }
        ?>
          
-         <div class="common-func"><a class="common-a" href="../html/Itemchose.html">刪除</a></div>
-         <div class="common-func"><a class="common-a" href="../html/Itemchose.html">編輯</a></div>
+         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
+         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
          <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
    </div>
     
