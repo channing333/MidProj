@@ -33,10 +33,10 @@ include ("db_func.php");
            echo "<script>loginError();</script>";
        }
        ?>
-            <div class="common-func"><a class="common-a" href="../html/Itemchose.html">刪除</a></div>
-            <div class="common-func"><a class="common-a" href="../html/Itemchose.html">編輯</a></div>
-            <div class="common-func"><a class="common-now" href="add.html">新增</a></div>
-            <div class="common-func"><a class="common-a" href="index.php">首頁</a></div>
+            <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
+            <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
+            <div class="common-func"><a class="common-now" href="../php/add.php">新增</a></div>
+            <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
         </div>
         <div class="Content color8EC5C6 ">
 
