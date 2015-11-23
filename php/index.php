@@ -57,6 +57,7 @@ $('body').photoZoom();
     else{
         
     }
+
 ?>
    <div class="common-head">實驗室財產管理系統</div>
    <div class="common-funcRow">
@@ -79,20 +80,22 @@ $('body').photoZoom();
     
    <div class="font">關鍵字搜尋<input type="text" name="target"><input type="button" value="GO"></div>
    <div class="font">請選擇類別</div>
-
-   <select>
-        <?php
+   <div class="sideBar">
+       <?php
         //查詢語句
-        $sql = selectAll("category","c_name");
+        $sql = selectAll("category");
         //執行SQL語句
         $query = mysql_query($sql, $link);
         while ( $row = mysql_fetch_row($query) ) {
-        echo "<option value=".$row[0].">".$row[1]."</option>";
+        echo "<option class=".'sidecontent'." value=".$row[0]."><a href='index.php?type=".$row[0]."'>".$row[1]."</a></option>";
         }
         ?>
-   </select>
+   </div>
    <table>
+
           <tr>
+
+              
             <th>圖片</th>
             <th>編號</th>
             <th>名稱</th>
@@ -109,7 +112,10 @@ $('body').photoZoom();
 $sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id","c_id");
 //執行SQL語句
 $query = mysql_query($sql, $link);
-
+    if(isset($_GET['type'])){
+        $sql = selectCross("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id",$_GET['type']);
+        $query = mysql_query($sql, $link);
+    }
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
