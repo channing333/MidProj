@@ -21,6 +21,14 @@ include ("db_func.php");
 	<style>
     
     </style>
+    <script src="../js/jquery.min.js"></script>
+<script  src="../js/photoZoom.min.js"> </script>
+<script>
+$(document).ready(function()
+{
+$('body').photoZoom();
+});
+</script> 
     
 
 	<title>
