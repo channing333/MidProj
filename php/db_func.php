@@ -39,4 +39,9 @@ function selectJoin($newColumn,$datasheet1,$datasheet2,$column1,$column2){
     return "SELECT ".$newColumn." from ".$datasheet1.",".$datasheet2." WHERE 
             ".$datasheet1.".".$column1."=".$datasheet2.".".$column2."";
 }
+
+//查詢 兩張表JOIN後再加入條件
+function selectCross($newColumn,$datasheet1,$datasheet2,$column,$condition){
+    return "SELECT ".$newColumn." from ".$datasheet1." JOIN ".$datasheet2." WHERE ".$column." = ".$condition."";
+}
 ?>

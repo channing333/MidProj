@@ -9,6 +9,16 @@
     height: 200px;
 }
 
+.sideBar{
+    float: left;
+}
+
+.sidecontent{
+    background-color: #EEEEEE;
+    border-style:solid;
+    border-radius: 5px;
+}
+
 table, td, th {
             text-align: center;
             border: 1px solid black;
@@ -16,7 +26,7 @@ table, td, th {
 
 table {
         
-        width: 100%;
+        width: 90%;
 }
 
 th {
