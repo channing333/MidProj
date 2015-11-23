@@ -24,3 +24,22 @@ th {
         background-color: green;
         color: white;
 }
+
+$("body").photoZoom(
+{
+zoomStyle : {
+"border":"1px solid #ccc",
+"background-color":"#fff",
+"box-shadow":"0 0 5px #888"
+}
+});
+
+$("body").photoZoom(
+{
+onMouseOver : function(currentImage){
+    
+},
+onMouseOut : function(currentImage){
+// do something
+}
+});
