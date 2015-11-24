@@ -11,12 +11,20 @@
 
 .sideBar{
     float: left;
+    background-color: #EEEEEE;
+    border-radius: 5px;
 }
 
 .sidecontent{
-    background-color: #EEEEEE;
-    border-style:solid;
+    background-color: #F5DEB3;
+    margin: 5px;
+    border-style:hidden;
     border-radius: 5px;
+    
+    
+}
+.sidecontent:hover{
+    
 }
 
 table, td, th {

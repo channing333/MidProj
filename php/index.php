@@ -39,39 +39,33 @@ $('body').photoZoom();
           
 <?php
 //判斷有沒有給值
+    //是否新增財產成功
     if(isset($_GET['add']) && $_GET['add']==1){
         echo "<script>addError();</script>";
     } 
-    else{
-        
-    }
+    //是否新增使用者成功
     if(isset($_GET['adduser']) && $_GET['adduser']==1){
         echo "<script>adduserError();</script>";
     } 
-    else{
-        
-    }
+    //是否登入成功
     if(isset($_GET['login']) && $_GET['login']==0){
         echo "<script>loginSuccess();</script>";
     } 
-    else{
-        
-    }
-
 ?>
    <div class="common-head">實驗室財產管理系統</div>
    <div class="common-funcRow">
-        <?php
-        session_start(); 
-        
-       if($_SESSION['login']=="success"){
-           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
-       }
-       else{
-           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
-           echo "<script>loginError();</script>";
-       }
-       ?>
+
+<?php
+session_start(); 
+
+if($_SESSION['login']=="success"){
+   echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
+}
+else{
+   echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
+   echo "<script>loginError();</script>";
+}
+?>
          
          <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
          <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
@@ -81,21 +75,19 @@ $('body').photoZoom();
    <div class="font">關鍵字搜尋<input type="text" name="target"><input type="button" value="GO"></div>
    <div class="font">請選擇類別</div>
    <div class="sideBar">
-       <?php
-        //查詢語句
-        $sql = selectAll("category");
-        //執行SQL語句
-        $query = mysql_query($sql, $link);
-        while ( $row = mysql_fetch_row($query) ) {
-        echo "<option class=".'sidecontent'." value=".$row[0]."><a href='index.php?type=".$row[0]."'>".$row[1]."</a></option>";
-        }
-        ?>
+<?php
+//查詢語句
+$sql = selectAll("category");
+//執行SQL語句
+$query = mysql_query($sql, $link);
+echo "<div class=".'sidecontent'."><a href='index.php'>‧全部</a></div>";
+while ( $row = mysql_fetch_row($query) ) {
+echo "<div class=".'sidecontent'."><a href='index.php?type=".$row[0]."'>‧".$row[1]."</a></div>";
+}
+?>
    </div>
    <table>
-
           <tr>
-
-              
             <th>圖片</th>
             <th>編號</th>
             <th>名稱</th>
@@ -107,15 +99,23 @@ $('body').photoZoom();
             <th>實驗室</th>
           </tr>
 <?php
+//財產顯示
 //查詢語句
-//欄位說明
-$sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id","c_id");
+$sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",0);
 //執行SQL語句
 $query = mysql_query($sql, $link);
-    if(isset($_GET['type'])){
-        $sql = selectCross("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id",$_GET['type']);
-        $query = mysql_query($sql, $link);
+//資料庫語法錯誤說明
+if (!$query) { 
+    die('Invalid query: ' . mysql_error());
+}
+if(isset($_GET['type'])){
+    //type是數字，不用括號
+    $sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",$_GET['type']);
+    $query = mysql_query($sql, $link);
+    if (!$query) { // add this check.
+        die('Invalid query: ' . mysql_error());
     }
+}
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
@@ -129,7 +129,6 @@ while($row = mysql_fetch_row($query)){
     echo "<td>".$row[5]."</td>";
     echo "</tr>";
 }
-
 ?>
     </table>
 	  
