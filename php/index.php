@@ -51,8 +51,12 @@ $('body').photoZoom();
     if(isset($_GET['login']) && $_GET['login']==0){
         echo "<script>loginSuccess();</script>";
     } 
+    //是否更新成功
+    if(isset($_GET['update']) && $_GET['update']==1){
+        echo "<script>updateSuccess();</script>";
+    } 
 ?>
-   <div class="common-head">實驗室財產管理系統</div>
+   <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
    <div class="common-funcRow">
 
 <?php

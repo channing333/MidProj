@@ -12,7 +12,7 @@
     </title>
 </head>
 <body>
-	   <div class="common-head">註冊帳號</div>
+	   <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
 	   <div class="common-funcRow">
          <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
          <div class="common-func"><a class="common-a" href="Itemchose.html">刪除</a></div>

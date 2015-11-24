@@ -54,4 +54,9 @@ function selectJoinThree($newColumn,$datasheet1,$datasheet2,$datasheet3,$column,
     }
     return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 WHERE $column = $condition";
 }
+
+//更改
+function updateColumn($datasheet,$column,$value){
+
+}
 ?>

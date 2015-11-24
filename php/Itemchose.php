@@ -21,7 +21,7 @@ include ("db_func.php");
     </title>
 </head>
 <body>
-    <div class="common-head">實驗室財產管理系統</div>
+    <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
     <div class="common-funcRow">
          <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
          <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
@@ -35,17 +35,6 @@ include ("db_func.php");
 		     <input type="submit" value="勾選完成">
              <input type="button" value="清除重勾">
     </div>
-    <select>
-        <?php
-        //查詢語句
-        $sql = selectAll("category","c_name");
-        //執行SQL語句
-        $query = mysql_query($sql, $link);
-        while ( $row = mysql_fetch_row($query) ) {
-        echo "<option value=".$row[0].">".$row[1]."</option>";
-        }
-        ?>
-   </select>
 
     <table>
           <tr>
@@ -58,16 +47,21 @@ include ("db_func.php");
             <th>前持有人</th>
             <th>類別</th>
             <th>備註</th>
+            <th>實驗室</th>
           </tr>
 <?php
+//財產顯示
 //查詢語句
-//欄位說明
-$sql = selectJoin("p_pic,p_number,p_name,c_name,p_note,l_id","property","category","c_id","c_id");
+$sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",0);
 //執行SQL語句
 $query = mysql_query($sql, $link);
+//資料庫語法錯誤說明
+if (!$query) { 
+    die('Invalid query: ' . mysql_error());
+}
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
-    echo " <td><input type=".'checkbox'." name='check[]' value='$row[1]'></td>";
+    echo "<td><input type=".'checkbox'." name='check[]' value='$row[1]'></td>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
     echo "<td>".$row[1]."</td>";
     echo "<td>".$row[2]."</td>";
@@ -76,6 +70,7 @@ while($row = mysql_fetch_row($query)){
     echo "<td>呂聆煒</td>";
     echo "<td>".$row[3]."</td>";
     echo "<td>".$row[4]."</td>";
+    echo "<td>".$row[5]."</td>";
     echo "</tr>";
 }
 
