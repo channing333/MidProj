@@ -20,7 +20,7 @@ include ("db_func.php");
     </head>
 
     <body>
-        <div class="common-head">新增財產</div>
+        <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
         <div class="common-funcRow">
         <?php
         session_start(); 

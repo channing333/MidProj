@@ -3,39 +3,35 @@
 include ("db_conn.php");
 //調用資料庫函示庫
 include ("db_func.php");
-//檔案路徑寫入資料庫
 
+$temp0=$_POST['p_num'];
 $temp1=$_POST['p_name'];
-$temp2=$_POST['p_note'];
-$arr=0;
-$arr2=0;
-print_r($temp1);
-print_r($temp2);
-
-//for ( $i=0 ; $i<1 ; $i++ ) {
-     print_r($temp1[$arr]);
-　 /*$value = array($_FILES["file"]["name"],$_POST["p_number"],$temp1[$i],$_POST["c_id"],$temp2[$i]);
-        print_r($value);
-    //$columnArray取值，取得欄位名稱放入方法insertAll變數
-    $sql = selectAll("property");
+$temp2=$_POST['c_id'];
+$temp3=$_POST['p_note'];
+$temp4=$_POST['l_id'];
+$temp5=$_POST['l_name'];
+$temp6=$_POST['c_name'];
+for($i=0;$i<count($temp1);$i++)
+{
+    $sql = selectColumn("lab","l_name",$temp5[$i]);
+    $query = mysql_query($sql, $link);
+    $row = mysql_fetch_row($query);
+    $sql = selectColumn("category","c_name",$temp6[$i]);
+    $query = mysql_query($sql, $link);
+    $row2 = mysql_fetch_row($query);
+    $sql = "UPDATE `property` SET `p_name`='".$temp1[$i]."',`c_id`='".$row2[0]."',`p_note`='".$temp3[$i]."',`l_id`='".$row[0]."' WHERE `p_number`='".$temp0[$i]."'";
     //執行SQL語句
-    $columnArray = mysql_query($sql, $link);
-
-    //插入 資料表,欄位,值
-    $sql = insertAll("property",$columnArray,$value,"1");
-    //執行SQL語句
-    $query = mysql_query($sql, $link);*/
-
-//}
-
-
-
+    $query = mysql_query($sql, $link);
+    if (!$query) { 
+        die('Invalid query: ' . mysql_error());
+    }
+}
 
 //php傳值給index頁面中javascript使用
-/*if($query){
-    header("Location: index.php?add=1");
+if($query){
+    header("Location: index.php?update=1");
 }
 else{
-    header("Location: index.php?add=2");
-}*/
+    header("Location: index.php?update=2");
+}
 ?>
