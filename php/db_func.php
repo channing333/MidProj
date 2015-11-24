@@ -11,6 +11,13 @@ function selectColumn($datasheet,$column,$condition){
     return "SELECT * from $datasheet WHERE $column = '$condition' "; 
 }
 
+//查詢 資料表 特定欄位 條件
+function selectCondition($newColumn,$datasheet,$column,$condition){
+    
+    return "SELECT $newColumn from $datasheet WHERE 
+            $column = $condition";
+}
+
 //插入 全部
 function insertAll($datasheet,$columnArray,$value,$PK_AI){
     //迴圈1.判斷欄位長度2.字串相加
@@ -41,7 +48,10 @@ function selectJoin($newColumn,$datasheet1,$datasheet2,$column1,$column2){
 }
 
 //查詢 兩張表JOIN後再加入條件
-function selectCross($newColumn,$datasheet1,$datasheet2,$column,$condition){
-    return "SELECT ".$newColumn." from ".$datasheet1." JOIN ".$datasheet2." WHERE ".$column." = ".$condition."";
+function selectJoinThree($newColumn,$datasheet1,$datasheet2,$datasheet3,$column,$condition){
+    if($condition==0){
+         return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3";
+    }
+    return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 WHERE $column = $condition";
 }
 ?>
