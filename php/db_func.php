@@ -59,4 +59,8 @@ function selectJoinThree($newColumn,$datasheet1,$datasheet2,$datasheet3,$column,
 function updateColumn($datasheet,$column,$value){
 
 }
+
+function delete($datasheet,$column,$value){
+    return "DELETE FROM $datasheet WHERE $column = $value";
+}
 ?>

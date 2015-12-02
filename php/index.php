@@ -55,6 +55,10 @@ $('body').photoZoom();
     if(isset($_GET['update']) && $_GET['update']==1){
         echo "<script>updateSuccess();</script>";
     } 
+    //是否刪除成功
+    if(isset($_GET['delete']) && $_GET['delete']==1){
+        echo "<script>deleteSuccess();</script>";
+    } 
 ?>
    <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
    <div class="common-funcRow">
@@ -71,7 +75,7 @@ else{
 }
 ?>
          
-         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
+         <div class="common-func"><a class="common-a" href="../php/delete.php">刪除</a></div>
          <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
          <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
    </div>
