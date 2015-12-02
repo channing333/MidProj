@@ -96,7 +96,7 @@ include ("db_func.php");
                 <div>
                    <textarea name="p_note" cols="40" rows="4" style="width: 300px; margin-top:20px;"></textarea>  
                 </div>
-                    <input type="submit" value="新增">
+                    <input type="submit" name="submit"value="新增">
                 </form>
             </div>
             <div class="rightContent">
