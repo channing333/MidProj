@@ -19,6 +19,23 @@ $sql = insertAll("property",$columnArray,$value,"1");
 //執行SQL語句
 $query = mysql_query($sql, $link);
 
+$sql = selectAll("record");
+$column = mysql_query($sql, $link);
+$sql1 = selectCondition("p_id","property","p_name",$_POST["p_name"]);
+$query = mysql_query($sql1, $link);
+//echo $query;
+/*if(!$query){
+   
+   die("query". mysql_error());
+}*/
+$row = mysql_fetch_row($query);
+/*if(!row){
+   die("row". mysql_error());
+}*/
+$column = mysql_query($sql, $link);
+$value= array("410175002",$row[0]);
+$sql = insertAll("record",$column,$value,"1");
+mysql_query($sql, $link);
 //php傳值給index頁面中javascript使用
 if($query){
     header("Location: index.php?add=1");

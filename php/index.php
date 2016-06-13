@@ -66,12 +66,23 @@ $('body').photoZoom();
 <?php
 session_start(); 
 
-if($_SESSION['login']=="success"){
-   echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
+if(isset($_SESSION['login']) && $_SESSION['login']=="success"){
+    if(isset($_GET['value'])){
+        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_GET['value']."</a></div>";
+    }
+    else{
+        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
+    }
+   
 }
 else{
+    if(isset($_GET['value'])){
+        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_GET['value']."</a></div>";
+    }
+    else{
    echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
    echo "<script>loginError();</script>";
+    }
 }
 ?>
          
@@ -109,7 +120,7 @@ echo "<div class=".'sidecontent'."><a href='index.php?type=".$row[0]."'>‧".$ro
 <?php
 //財產顯示
 //查詢語句
-$sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",0);
+$sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,`r_datelend`,`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",0);
 //執行SQL語句
 $query = mysql_query($sql, $link);
 //資料庫語法錯誤說明
@@ -118,23 +129,24 @@ if (!$query) {
 }
 if(isset($_GET['type'])){
     //type是數字，不用括號
-    $sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",$_GET['type']);
+    $sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,`r_datelend`,`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",$_GET['type']);
     $query = mysql_query($sql, $link);
     if (!$query) { // add this check.
         die('Invalid query: ' . mysql_error());
     }
 }
+
 while($row = mysql_fetch_row($query)){
     echo "<tr>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
     echo "<td>".$row[1]."</td>";
     echo "<td>".$row[2]."</td>";
-    echo "<td>2015/11/15</td>";
-    echo "<td>陳昱豪</td>";
-    echo "<td>呂聆煒</td>";
     echo "<td>".$row[3]."</td>";
     echo "<td>".$row[4]."</td>";
     echo "<td>".$row[5]."</td>";
+    echo "<td>".$row[6]."</td>";
+    echo "<td>".$row[7]."</td>";
+    echo "<td>".$row[8]."</td>";
     echo "</tr>";
 }
 ?>

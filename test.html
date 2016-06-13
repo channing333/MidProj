@@ -1,18 +1,10 @@
-function addError(){
-    return alertify.success('新增成功');
-}
-
-function updateSuccess(){
-    return alertify.success('更新成功');
-}
-
-function deleteSuccess(){
-    return alertify.success('刪除成功');
-}
-
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+<script type="text/javascript">
 var infoBox; // 訊息 label
 var textBox; // 最終的辨識訊息 text input
-//var tempBox; // 中間的辨識訊息 text input
+var tempBox; // 中間的辨識訊息 text input
 var startStopButton; // 「辨識/停止」按鈕
 var final_transcript = ''; // 最終的辨識訊息的變數
 var recognizing = false; // 是否辨識中
@@ -20,14 +12,14 @@ var recognizing = false; // 是否辨識中
 function startButton(event) {
   infoBox = document.getElementById("infoBox"); // 取得訊息控制項 infoBox
   textBox = document.getElementById("textBox"); // 取得最終的辨識訊息控制項 textBox
-  //tempBox = document.getElementById("tempBox"); // 取得中間的辨識訊息控制項 tempBox
+  tempBox = document.getElementById("tempBox"); // 取得中間的辨識訊息控制項 tempBox
   startStopButton = document.getElementById("startStopButton"); // 取得「辨識/停止」這個按鈕控制項
   langCombo = document.getElementById("langCombo"); // 取得「辨識語言」這個選擇控制項
   if (recognizing) { // 如果正在辨識，則停止。
     recognition.stop();
   } else { // 否則就開始辨識
     textBox.value = ''; // 清除最終的辨識訊息
-    //tempBox.value = ''; // 清除中間的辨識訊息
+    tempBox.value = ''; // 清除中間的辨識訊息
     final_transcript = ''; // 最終的辨識訊息變數
     recognition.lang = langCombo.value; // 設定辨識語言
     recognition.start(); // 開始辨識
@@ -65,7 +57,20 @@ if (!('webkitSpeechRecognition' in window)) {  // 如果找不到 window.webkitS
     }
     if (final_transcript.trim().length > 0) // 如果有最終辨識文字
         textBox.value = final_transcript; // 顯示最終辨識文字
-    //if (interim_transcript.trim().length > 0) // 如果有中間辨識文字
-        //tempBox.value = interim_transcript; // 顯示中間辨識文字
+    if (interim_transcript.trim().length > 0) // 如果有中間辨識文字
+        tempBox.value = interim_transcript; // 顯示中間辨識文字
   };
 }
+</script>   
+<BR/>
+最後結果：<input id="textBox" type="text" size="60" value=""/><BR/>
+中間結果：<input id="tempBox" type="text" size="60" value=""/><BR/>
+辨識語言：
+<select id="langCombo">
+  <option value="en-US">英文(美國)</option>
+  <option value="cmn-Hant-TW">中文(台灣)</option>
+</select>
+<input id="startStopButton" type="button" value="辨識" onclick="startButton(event)"/><BR/>
+<label id="infoBox"></label>
+</body>
+</html>

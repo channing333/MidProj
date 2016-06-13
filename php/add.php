@@ -11,6 +11,10 @@ include ("db_func.php");
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel=stylesheet type="text/css" href="../css/add.css">
         <link rel=stylesheet type="text/css" href="../css/common.css">
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/add.js"></script>
+        <script type="text/javascript" src="../js/adduser.js"></script>
+        <script type="text/javascript" src="../js/login.js"></script>
         <style>
 
         </style>
@@ -25,7 +29,7 @@ include ("db_func.php");
         <?php
         session_start(); 
         
-       if($_SESSION['login']=="success"){
+       if(isset($_SESSION['login']) && $_SESSION['login']=="success"){
            echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
        }
        else{
@@ -75,7 +79,16 @@ include ("db_func.php");
                     <input type="submit" name="submit" value="上傳檔案" />
 
                 <div>
-                    <input type="text" class="1" name="p_number">
+                    
+                    <input type="text" id="textBox" class="1" name="p_number">
+                    
+                    <BR/>
+                     <select id="langCombo">
+                      <option value="en-US">英文(美國)</option>
+                      <option value="cmn-Hant-TW">中文(台灣)</option>
+                    </select>
+                    <input id="startStopButton" type="button" value="辨識" onclick="startButton(event)"/><BR/>
+                    <label id="infoBox"></label>
                 </div>
                 <div>
                     <select style="height:30px;width:305px;margin-top:20px;" name="l_id">
