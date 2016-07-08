@@ -1,11 +1,9 @@
 .common-head{
-    background-color: #F5DEB3;
-    margin: 15px 0px;
-    padding-top: 20px;
-	height: 60px;
-	border-radius: 33px 33px 33px 33px;
+    background-color: #000000;
+    color: #FFFFFF; 
     text-align: center;
-    font-size:30px;   
+    font-size:30px;  
+    text-decoration: none;
 }
 
 .common-funcRow{

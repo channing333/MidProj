@@ -3,6 +3,8 @@
 include ("db_conn.php");
 //調用資料庫函示庫
 include ("db_func.php");
+include ("header.php");
+
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +14,12 @@ include ("db_func.php");
     <link rel="stylesheet" href="../css/Itemchose.css">
     <link rel="stylesheet" href="../css/Index.css">
     <link rel="stylesheet" href="../css/common.css">
-
+<!--這三段式bootstrap的-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<style>
 
     </style>
@@ -21,14 +28,9 @@ include ("db_func.php");
     </title>
 </head>
 <body>
-    <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
-    <div class="common-funcRow">
-         <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
-         <div class="common-func"><a class="common-now" href="../php/delete.php">刪除</a></div>
-         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
-         <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
-         <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
-   </div>
+   <?php
+    callHeader();
+?>
     <div class="leftContent font">刪除:請選擇要刪除之項目！</div>
     <div class="rightContent">
        <form action="del.php"  method="post">

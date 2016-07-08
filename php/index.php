@@ -3,6 +3,7 @@
 include ("db_conn.php");
 //調用資料庫函示庫
 include ("db_func.php");
+include ("header.php");
 
 ?>
 <!DOCTYPE html>
@@ -11,25 +12,23 @@ include ("db_func.php");
 	<meta charset="utf-8">
     <link rel="stylesheet" href="../css/Index.css">
     <link rel="stylesheet" href="../css/common.css">
-    <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/add.js"></script>
-    <script type="text/javascript" src="../js/adduser.js"></script>
-    <script type="text/javascript" src="../js/login.js"></script>
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/docs.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/bootstrap-social.css">
+    <!--這三段式bootstrap的-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/add.js"></script>
+    <script src="../js/adduser.js"></script>
+    <script src="../js/login.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.core.css" rel="stylesheet">  
     <link href="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.default.css" rel="stylesheet">  
     <script src="//cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.10/alertify.min.js"></script> 
-	<style>
-    
-    </style>
-    <script src="../js/jquery.min.js"></script>
-<script  src="../js/photoZoom.min.js"> </script>
-<script>
-$(document).ready(function()
-{
-$('body').photoZoom();
-});
-</script> 
-    
 
 	<title>
         實驗室財產管理系統
@@ -45,6 +44,10 @@ $('body').photoZoom();
     } 
     //是否新增使用者成功
     if(isset($_GET['adduser']) && $_GET['adduser']==1){
+        echo "<script>adduserSuccess();</script>";
+    } 
+    //是否新增使用者失敗
+    if(isset($_GET['adduser']) && $_GET['adduser']==2){
         echo "<script>adduserError();</script>";
     } 
     //是否登入成功
@@ -54,44 +57,23 @@ $('body').photoZoom();
     //是否更新成功
     if(isset($_GET['update']) && $_GET['update']==1){
         echo "<script>updateSuccess();</script>";
-    } 
+    }
+    //是否更新失敗
+    if(isset($_GET['update']) && $_GET['update']==2){
+        echo "<script>updateError();</script>";
+    }
+
     //是否刪除成功
     if(isset($_GET['delete']) && $_GET['delete']==1){
         echo "<script>deleteSuccess();</script>";
-    } 
+    }
 ?>
-   <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
-   <div class="common-funcRow">
-
+<!--包裝header-->
 <?php
-session_start(); 
-
-if(isset($_SESSION['login']) && $_SESSION['login']=="success"){
-    if(isset($_GET['value'])){
-        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_GET['value']."</a></div>";
-    }
-    else{
-        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
-    }
-   
-}
-else{
-    if(isset($_GET['value'])){
-        echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_GET['value']."</a></div>";
-    }
-    else{
-   echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
-   echo "<script>loginError();</script>";
-    }
-}
+    callHeader();
 ?>
-         
-         <div class="common-func"><a class="common-a" href="../php/delete.php">刪除</a></div>
-         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
-         <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
-   </div>
-    
-   <div class="font">關鍵字搜尋<input type="text" name="target"><input type="button" value="GO"></div>
+
+      
    <div class="font">請選擇類別</div>
    <div class="sideBar">
 <?php
@@ -101,7 +83,7 @@ $sql = selectAll("category");
 $query = mysql_query($sql, $link);
 echo "<div class=".'sidecontent'."><a href='index.php'>‧全部</a></div>";
 while ( $row = mysql_fetch_row($query) ) {
-echo "<div class=".'sidecontent'."><a href='index.php?type=".$row[0]."'>‧".$row[1]."</a></div>";
+    echo "<div class=".'sidecontent'."><a href='index.php?type=".$row[0]."'>‧".$row[1]."</a></div>";
 }
 ?>
    </div>
@@ -120,7 +102,9 @@ echo "<div class=".'sidecontent'."><a href='index.php?type=".$row[0]."'>‧".$ro
 <?php
 //財產顯示
 //查詢語句
-$sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,`r_datelend`,`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",0);
+//$sql = selectJoinFour("`p_id`,MAX(`r_datelend`)","`property`","`category`","`lab`","`record`","`c_id`",0);
+$sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,MAX(`r_datelend`),`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",0);
+$sql.= "GROUP BY `p_id`";
 //執行SQL語句
 $query = mysql_query($sql, $link);
 //資料庫語法錯誤說明
@@ -129,24 +113,36 @@ if (!$query) {
 }
 if(isset($_GET['type'])){
     //type是數字，不用括號
-    $sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,`r_datelend`,`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",$_GET['type']);
+    $sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,MAX(`r_datelend`),`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",$_GET['type']);
+    $sql.= "GROUP BY `p_id`";
     $query = mysql_query($sql, $link);
     if (!$query) { // add this check.
         die('Invalid query: ' . mysql_error());
     }
 }
+if(isset($_GET['key'])){
+    //type是數字，不用括號
+    $keywords = mysql_real_escape_string($_GET['key']);//得到來源關鍵字
+    $keys = explode(" ",$keywords); //判斷空格則組合成陣列
+    $sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,MAX(`r_datelend`),`u_number`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",0);
+    $sql .="WHERE p_name LIKE '%$keywords%'";
+    foreach($keys as $k){
+        $sql .= " OR p_name LIKE '%$k%' ";
+    }
+    $sql.= "GROUP BY `p_id`";
+    $query = mysql_query($sql,$link);
+
+}
 
 while($row = mysql_fetch_row($query)){
+
     echo "<tr>";
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
-    echo "<td>".$row[1]."</td>";
-    echo "<td>".$row[2]."</td>";
-    echo "<td>".$row[3]."</td>";
-    echo "<td>".$row[4]."</td>";
-    echo "<td>".$row[5]."</td>";
-    echo "<td>".$row[6]."</td>";
-    echo "<td>".$row[7]."</td>";
-    echo "<td>".$row[8]."</td>";
+    
+    for($i=1;$i<9;$i++){
+        echo "<td>".$row[$i]."</td>";
+    }
+
     echo "</tr>";
 }
 ?>

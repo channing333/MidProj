@@ -33,7 +33,14 @@ $row = mysql_fetch_row($query);
    die("row". mysql_error());
 }*/
 $column = mysql_query($sql, $link);
-$value= array("410175002",$row[0]);
+session_start(); 
+if(isset($_SESSION['login']) && $_SESSION['login']=="success"){
+    $account = $_SESSION['acc'];
+}
+else{
+	$account = "410175002";
+}
+$value= array($account,$row[0]);
 $sql = insertAll("record",$column,$value,"1");
 mysql_query($sql, $link);
 //php傳值給index頁面中javascript使用
