@@ -15,7 +15,7 @@ function selectColumn($datasheet,$column,$condition){
 function selectCondition($newColumn,$datasheet,$column,$condition){
     
     return "SELECT $newColumn from $datasheet WHERE 
-            $column = $condition";
+            $column = '$condition'";
 }
 
 //插入 全部
@@ -55,6 +55,20 @@ function selectJoinThree($newColumn,$datasheet1,$datasheet2,$datasheet3,$column,
     return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 WHERE $column = $condition";
 }
 
+function selectJoinFour($newColumn,$datasheet1,$datasheet2,$datasheet3,$datasheet4,$column,$condition){
+    if($condition==0){
+         return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 NATURAL JOIN $datasheet4
+                    ";
+    }
+    /*
+    if($condition=="date"){
+         return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 NATURAL JOIN $datasheet4" GROUP BY 'p_id' ;
+    }*/
+
+    return "SELECT $newColumn from $datasheet1 NATURAL JOIN $datasheet2 NATURAL JOIN $datasheet3 NATURAL JOIN $datasheet4 WHERE $column = $condition ";
+
+}
+
 //更改
 function updateColumn($datasheet,$column,$value){
 
@@ -63,4 +77,6 @@ function updateColumn($datasheet,$column,$value){
 function delete($datasheet,$column,$value){
     return "DELETE FROM $datasheet WHERE $column = $value";
 }
+
+
 ?>

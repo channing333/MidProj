@@ -1,38 +1,44 @@
-.content {
-    text-align: center;
-    height: auto;
-}
-
 .information {
-    width: 300px;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top :3%;
     border-radius: 10px;
     border-width: 5px;
-    color: #111111;
-    background-color: #8EC5C6;
+}
 
+.fblogo{
+    float:left;   
+    margin: 10% 20% 0px 20%;
 }
 
 .account{
-    font-size: 20px;
+    width: 100%;
     margin-top: 10px;
+    border-color: #000000;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.fb {
+    width: 100%;
+    margin-top :5%;
+    border-radius: 10px;
+    border-width: 5px;
 }
 
 .button{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100px;
+    width: 100%;
     height: 50px;
-    border-radius: 5px;
-    background-color: #90EE90;
+    margin-top: 5%;
+    border-radius: 10px;
+    background-color: #6495ED;
     font-size: 15px;
+    color: #FFFFFF;
 }
 
 .button:hover{
     box-shadow: #666 2px 2px 3px;
+    background-color: #154eb7;
 }
 
 .footer {

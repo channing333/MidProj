@@ -12,13 +12,13 @@
     </title>
 </head>
 <body>
-	   <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
+	   <div class="common-head"><a href="index.php">實驗室財產管理系統</a></div>
 	   <div class="common-funcRow">
-         <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
-         <div class="common-func"><a class="common-a" href="Itemchose.html">刪除</a></div>
+         <div class="common-func"><a class="common-a" href="login.php">使用者:</a></div>
+         <div class="common-func"><a class="common-a" href="delete.html">刪除</a></div>
          <div class="common-func"><a class="common-a" href="Itemchose.html">編輯</a></div>
-         <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
-         <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
+         <div class="common-func"><a class="common-a" href="add.php">新增</a></div>
+         <div class="common-func"><a class="common-a" href="index.php">首頁</a></div>
        </div>
 		<div class="Content color8EC5C6">
             <form action="adduser.php"  method="post">

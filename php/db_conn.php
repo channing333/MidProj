@@ -3,7 +3,7 @@ $DB_HOST = "localhost";
 $DB_PORT = "80";
 $DB_USERNAME = "root";
 $DB_PASSWORD = "";
-$DB_NAME = "midproj";
+$DB_NAME = "midproj_v2";
 mysql_query("SET NAMES 'utf8'");
 
 // 建立資料庫連線

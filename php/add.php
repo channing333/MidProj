@@ -3,6 +3,7 @@
 include ("db_conn.php");
 //調用資料庫函示庫
 include ("db_func.php");
+include ("header.php");
 ?>
     <!DOCTYPE html>
     <html>
@@ -11,6 +12,15 @@ include ("db_func.php");
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel=stylesheet type="text/css" href="../css/add.css">
         <link rel=stylesheet type="text/css" href="../css/common.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/add.js"></script>
+        <script type="text/javascript" src="../js/adduser.js"></script>
+        <script type="text/javascript" src="../js/login.js"></script>
         <style>
 
         </style>
@@ -20,24 +30,9 @@ include ("db_func.php");
     </head>
 
     <body>
-        <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
-        <div class="common-funcRow">
-        <?php
-        session_start(); 
-        
-       if($_SESSION['login']=="success"){
-           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者：".$_SESSION['acc']."</a></div>";
-       }
-       else{
-           echo "<div class='common-func'><a class='common-a' href='../html/Login.html'>使用者:</a></div>";
-           echo "<script>loginError();</script>";
-       }
-       ?>
-            <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
-            <div class="common-func"><a class="common-a" href="../php/Itemchose.php">編輯</a></div>
-            <div class="common-func"><a class="common-now" href="../php/add.php">新增</a></div>
-            <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
-        </div>
+<?php
+    callHeader();
+?>
         <div class="Content color8EC5C6 ">
 
             <div class="leftContent">
@@ -75,7 +70,16 @@ include ("db_func.php");
                     <input type="submit" name="submit" value="上傳檔案" />
 
                 <div>
-                    <input type="text" class="1" name="p_number">
+                    
+                    <input type="text" id="textBox" class="1" name="p_number">
+                    
+                    <BR/>
+                     <select id="langCombo">
+                      <option value="en-US">英文(美國)</option>
+                      <option value="cmn-Hant-TW">中文(台灣)</option>
+                    </select>
+                    <input id="startStopButton" type="button" value="辨識" onclick="startButton(event)"/><BR/>
+                    <label id="infoBox"></label>
                 </div>
                 <div>
                     <select style="height:30px;width:305px;margin-top:20px;" name="l_id">

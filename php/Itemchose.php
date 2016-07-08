@@ -3,7 +3,7 @@
 include ("db_conn.php");
 //調用資料庫函示庫
 include ("db_func.php");
-
+include ("header.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,23 +12,25 @@ include ("db_func.php");
     <link rel="stylesheet" href="../css/Itemchose.css">
     <link rel="stylesheet" href="../css/Index.css">
     <link rel="stylesheet" href="../css/common.css">
+    <!--這三段式bootstrap的-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/assets/css/docs.css">
+    <link rel="stylesheet" href="../bootstrap-social-gh-pages/bootstrap-social.css">
 
-	<style>
-
-    </style>
 	<title>
         實驗室財產管理系統
     </title>
 </head>
 <body>
-    <div class="common-head"><a href="index.php" style="text-decoration:none; color:black;">實驗室財產管理系統</a></div>
-    <div class="common-funcRow">
-         <div class="common-func"><a class="common-a" href="../html/Login.html">使用者:</a></div>
-         <div class="common-func"><a class="common-a" href="../php/Itemchose.php">刪除</a></div>
-         <div class="common-func"><a class="common-now" href="../php/Itemchose.php">編輯</a></div>
-         <div class="common-func"><a class="common-a" href="../php/add.php">新增</a></div>
-         <div class="common-func"><a class="common-a" href="../php/index.php">首頁</a></div>
-   </div>
+    <?php
+        callheader();
+    ?>
     <div class="leftContent font">編輯:請選擇要編輯之項目！</div>
     <div class="rightContent">
        <form action="Edit.php"  method="post">
@@ -50,13 +52,16 @@ include ("db_func.php");
             <th>實驗室</th>
           </tr>
 <?php
+
 //財產顯示
 //查詢語句
-$sql = selectJoinThree("`p_pic`,`p_number`,`p_name`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`c_id`",0);
+$sql = selectJoinFour("`p_pic`,`p_number`,`p_name`,`r_datelend`,`u_number`,`c_name`,`p_note`,`l_name`","`property`","`category`","`lab`","`record`","`c_id`",0);
+$sql.= "GROUP BY `p_id`";
 //執行SQL語句
 $query = mysql_query($sql, $link);
+
 //資料庫語法錯誤說明
-if (!$query) { 
+if (!$query) {
     die('Invalid query: ' . mysql_error());
 }
 while($row = mysql_fetch_row($query)){
@@ -65,12 +70,13 @@ while($row = mysql_fetch_row($query)){
     echo "<td><img class=".'image'." src=../image/".$row[0]."></td>";
     echo "<td>".$row[1]."</td>";
     echo "<td>".$row[2]."</td>";
-    echo "<td>2015/11/15</td>";
-    echo "<td>陳昱豪</td>";
-    echo "<td>呂聆煒</td>";
     echo "<td>".$row[3]."</td>";
+    //若只有一筆record，現有/上一個持有 會一樣
+    echo "<td>".$row[4]."</td>";
     echo "<td>".$row[4]."</td>";
     echo "<td>".$row[5]."</td>";
+    echo "<td>".$row[6]."</td>";
+    echo "<td>".$row[7]."</td>";
     echo "</tr>";
 }
 
