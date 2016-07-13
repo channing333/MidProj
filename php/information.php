@@ -40,43 +40,22 @@ include ("header.php");
     if(isset($_GET['login']) && $_GET['login']==1){
         echo "<script>loginError();</script>";
     }
-    /*session_start();
-    //登入成功戳記
-    
-    if($_SESSION["login"]=="success"){
-      header("Location: ../php/loginEdit.php"); 
-    }*/
 ?>
 <!--套用HEADER-->
 <?php
     callHeader();
 ?>
-    <div class="information">
-      <form name="login" method="post">
-        <font size="5px"> 帳號：</font><br>
-        <input type="text" class="form-control" name="acc" onchange="checkNull(this)">
-        <br><font size="5px"> 密碼：</font><br>
-        <input type="password" class="form-control" name="pwd" onchange="checkNull(this)">
-        <br>
-        <input type="submit" class="button" name="Send" value="登入" onclick="loginNull()">
-        <br>
-        <input type="submit" class="button" name="reg" value="註冊" onclick="this.form.action='../php/register.php';">
-      </form>
-      <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.6&appId=866077333478159";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
-      <div class="fb">
-      <a class="btn btn-block btn-social btn-facebook">
-        <span class="fa fa-facebook" onclick="checkLoginState();"></span> Sign in with Facebook
-      </a>
-      </div>
-    </div>   
+<div class="container">
+  <h2>Vertical (basic) form</h2>
+  <form role="form">
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+    
      
 </body>
 
